@@ -11,4 +11,4 @@ app.use(router)
 
 app.use(handleError)
 
-app.listen(3000, () => console.log('welcome to the server'))
+app.listen(process.env.PORT, () => console.log('welcome to the server'))
