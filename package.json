@@ -7,7 +7,7 @@
     "prisma": "npx prisma db push",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
-    "start": "npm run prisma && tsc && node build/server.js ",
+    "build": "npm run prisma && tsc && node build/server.js ",
     "lint": "eslint --ignore-path .gitignore .",
     "commit": "cz"
   },
