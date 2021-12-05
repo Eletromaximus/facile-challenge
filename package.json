@@ -5,9 +5,8 @@
   "main": "server.js",
   "scripts": {
     "prisma": "npx prisma db push",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && node build/server.js ",
     "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
-    "build": "npm run prisma && tsc && node build/server.js ",
     "lint": "eslint --ignore-path .gitignore .",
     "commit": "cz"
   },
