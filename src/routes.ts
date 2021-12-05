@@ -1,18 +1,20 @@
 import { Router } from 'express'
-import { CreateEncriptController } from './controllers/CreateEncriptController'
+import { CreateEncryptController } from './controllers/CreateEncryptController'
+import { CreateDecryptController } from './controllers/CreateDecryptController'
 
 const router = Router()
 
-const createEncriptController = new CreateEncriptController()
+const createEncryptController = new CreateEncryptController()
+const createDecryptController = new CreateDecryptController()
 
 router.post(
   '/encript',
-  createEncriptController.encript
+  createEncryptController.encrypt
 )
 
 router.get(
   '/encript/:id',
-  createEncriptController.decrypt
+  createDecryptController.decrypt
 )
 
 export { router }
