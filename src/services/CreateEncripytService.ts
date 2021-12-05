@@ -39,8 +39,6 @@ export default class CreateEncryptService {
         encrypted_name: 'shazam!'
       }
     } catch (err) {
-      console.log(err)
-
       const error = new Error('Serviço indisponível')
       return error
     }
