@@ -1,23 +1,22 @@
 import { Request, Response } from 'express'
 import CreateEncryptService from '../services/CreateEncripytService'
+import { CustomError } from '../utils/CustomError'
 
 export class CreateEncryptController {
   async encrypt (req: Request, res: Response) {
-    const { message } = req.body
-
     try {
+      const { message } = req.body
+
       const createEncryptService = new CreateEncryptService()
 
       const encript = await createEncryptService.execute(message.toString())
-
-      return res.json(encript)
-    } catch (err) {
-      console.log(err)
-
-      return res.json({
-        message: 'Erro interno, serviço indisponível',
-        status: 500
-      })
+      res.json(encript)
+    } catch (error: any) {
+      if (error instanceof CustomError) {
+        res.status(error.status).json(error.message)
+      } else {
+        res.status(error.status).json('Erro interno')
+      }
     }
   }
 }

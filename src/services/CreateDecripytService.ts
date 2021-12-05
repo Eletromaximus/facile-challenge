@@ -5,11 +5,19 @@ export default class CreateDecryptService {
   async execute (id: number) {
     const prisma = new PrismaClient()
 
+    if (id <= 0) {
+      return 'ID inválido'
+    }
+
     const data: database | null = await prisma.database.findUnique({
       where: {
         id
       }
     })
+
+    if (data === null) {
+      return 'ID inválido'
+    }
 
     if (data?.buffer && data?.hash !== null) {
       const decipher = crypto.createDecipheriv(

@@ -1,19 +1,20 @@
 import crypto from 'crypto'
 // @ts-ignore
 import { PrismaClient } from '@prisma/client'
-
-// interface IEncript {
-//   message: string
-// }
-
+import { CustomError } from '../utils/CustomError'
 export default class CreateEncryptService {
   async execute (message: string) {
-    if (message === '') {
-      throw new Error('O campo \'message\' é obrigatório')
-    }
-
     const prisma = new PrismaClient()
     const buffer = Buffer.from(crypto.randomBytes(16))
+
+    if (message === '') {
+      const error = new CustomError(
+        'code: E_VALIDATION_FAILURE, message: O campo \'message\' é obrigatório',
+        400
+      )
+
+      return error
+    }
 
     const cipher = crypto.createCipheriv(
       'aes-128-ctr',
@@ -26,16 +27,22 @@ export default class CreateEncryptService {
       cipher.final()
     ])
 
-    const { id } = await prisma.database.create({
-      data: {
-        hash: encrypted.toString('hex'),
-        buffer: buffer.toString('hex')
+    try {
+      const { id } = await prisma.database.create({
+        data: {
+          hash: encrypted.toString('hex'),
+          buffer: buffer.toString('hex')
+        }
+      })
+      return {
+        id: id,
+        encrypted_name: 'shazam!'
       }
-    })
+    } catch (err) {
+      console.log(err)
 
-    return {
-      id: id,
-      encrypted_name: 'shazam!'
+      const error = new Error('Serviço indisponível')
+      return error
     }
   }
 }
