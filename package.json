@@ -8,8 +8,8 @@
   },
   "scripts": {
     "prisma": "npx prisma db push",
-    "start": "npm run prisma && node build/server.js",
-    "build": "tsc ",
+    "start": "node build/server.js",
+    "build": "npm run prisma && tsc ",
     "postinstall": "npm run build",
     "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
     "lint": "eslint --ignore-path .gitignore .",
