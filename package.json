@@ -9,14 +9,14 @@
   "scripts": {
     "prisma": "npx prisma db push",
     "start": "node build/server.js",
-    "build": "tsc ",
+    "build": "npm run prisma && tsc ",
     "postinstall": "npm run build",
     "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
     "lint": "eslint --ignore-path .gitignore .",
     "commit": "cz"
   },
   "author": "Max Milliano <maxmillianox@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@prisma/client": "^3.6.0",
     "@types/pg": "^8.6.1",

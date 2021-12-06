@@ -20,9 +20,8 @@ export class CreateDecryptController {
 
         res.status(200).json(decryp)
       } catch (err) {
-        return res.json({
-          message: 'Erro interno',
-          status: 500
+        return res.status(500).json({
+          message: 'Erro interno'
         })
       }
     } else {
