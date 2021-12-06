@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "prisma": "npx prisma db push",
-    "build": "npm install && tsc && node build/server.js ",
+    "start": "npm install && tsc && npm run build",
+    "build": "node build/server.js ",
     "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
     "lint": "eslint --ignore-path .gitignore .",
     "commit": "cz"
