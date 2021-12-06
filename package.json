@@ -16,7 +16,7 @@
     "commit": "cz"
   },
   "author": "Max Milliano <maxmillianox@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@prisma/client": "^3.6.0",
     "@types/pg": "^8.6.1",
