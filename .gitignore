@@ -12,6 +12,8 @@
 # next.js
 /.next*
 
+# ignorando js
+*.js
 # production
 /build
 
