@@ -9,7 +9,7 @@
   "scripts": {
     "prisma": "npx prisma db push",
     "start": "npm install & tsc & npm run build",
-    "build": "node src/server.js ",
+    "build": "node build/server.js ",
     "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
     "lint": "eslint --ignore-path .gitignore .",
     "commit": "cz"
